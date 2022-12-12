@@ -1,0 +1,44 @@
+.map > .leaflet-container {
+  width: 90vw;
+  height: 100px;
+  z-index: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > .search-button {
+    display: none;
+  }
+}
+
+.map.selecting {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: white;
+
+  > .leaflet-container {
+    height: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    > .search-button {
+      display: block;
+    }
+  }
+}
+
+.map .leaflet-control-zoom,
+.leaflet-bottom {
+  display: none;
+}
+
+.map.selecting .leaflet-control-zoom,
+.map.selecting .leaflet-bottom {
+  display: block;
+}
+
+.leaflet-pane {
+  z-index: -1 !important;
+}

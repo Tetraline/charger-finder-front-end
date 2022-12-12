@@ -1,6 +1,6 @@
 import NavBar from "../NavBar/NavBar";
 import Map from "../Map/Map";
-import SellerList from "../SellerList/SellerList";
+import ResultList from "../ResultList/ResultList";
 import { useState, useEffect } from "react";
 
 const CustomerApp = () => {
@@ -9,13 +9,12 @@ const CustomerApp = () => {
     lng: "none",
   };
   const [userLocation, setUserLocation] = useState(defaultLocation);
-  const [sellers, setSellers] = useState([]);
+  const [results, setResults] = useState([]);
 
-  const getSellersAndDisplay = async (userLocation) => {
+  const getResultsAndDisplay = async (userLocation) => {
     const p = {};
     p.lat = Number(userLocation.lat);
     p.lng = Number(userLocation.lng);
-    p.category = "food";
     const params = Object.entries(p)
       .map(([key, value]) => `${key}=${value}`)
       .join("&");
@@ -23,15 +22,15 @@ const CustomerApp = () => {
       const url = "http://localhost:8080/location/?" + params;
       const res = await fetch(url);
       const data = await res.json();
-      setSellers(data);
+      setResults(data);
     } catch (err) {
       const data = [{ name: "connection error" }];
-      setSellers(data);
+      setResults(data);
     }
   };
 
   useEffect(() => {
-    getSellersAndDisplay(userLocation);
+    getResultsAndDisplay(userLocation);
   }, [userLocation]);
 
   return (
@@ -43,8 +42,8 @@ const CustomerApp = () => {
         crossOrigin=""
       />
       <NavBar />
-      <Map setUserLocation={setUserLocation} dave="married" />
-      <SellerList sellers={sellers} />
+      <Map setUserLocation={setUserLocation} />
+      <ResultList results={results} />
     </>
   );
 };

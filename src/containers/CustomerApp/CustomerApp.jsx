@@ -30,7 +30,9 @@ const CustomerApp = () => {
   };
 
   useEffect(() => {
-    getResultsAndDisplay(userLocation);
+    if (userLocation.lat !== "none") {
+      getResultsAndDisplay(userLocation);
+    }
   }, [userLocation]);
 
   return (

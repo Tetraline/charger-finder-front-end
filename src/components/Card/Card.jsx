@@ -1,14 +1,14 @@
 import "./Card.scss";
-const Card = ({ seller }) => {
+const Card = ({ result }) => {
   return (
-    <div key={seller.name} className="card">
+    <div key={result.name} className="card">
       <div className="card__seller-info">
-        <h2>{seller.name}</h2>
-        <p>{seller.description}</p>
+        <h2>{result.name}</h2>
+        <p>{result.description}</p>
       </div>
       <div className="card__distance-time-container">
-        <p>{seller.distance}</p>
-        <p>{seller.time}</p>
+        <p>{result.distance}</p>
+        <p>{result.time}</p>
       </div>
     </div>
   );

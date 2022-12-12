@@ -1,9 +1,11 @@
 import Card from "../../components/Card/Card";
 
 const ResultList = ({ results }) => {
-  const resultsJSX = results.map((result) => (
-    <Card key={result.name} result={result} />
-  ));
+  const resultsJSX =
+    results.length &&
+    results.map((result) => (
+      <Card key={result.ChargeDeviceLocation.Latitude} result={result} />
+    ));
 
   return <>{resultsJSX}</>;
 };

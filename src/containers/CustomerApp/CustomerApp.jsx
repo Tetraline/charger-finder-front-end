@@ -19,12 +19,12 @@ const CustomerApp = () => {
       .map(([key, value]) => `${key}=${value}`)
       .join("&");
     try {
-      const url = "http://localhost:8080/location/?" + params;
+      const url = "https://charger-gzrw4lexua-ew.a.run.app/chargers?" + params;
       const res = await fetch(url);
       const data = await res.json();
       setResults(data);
     } catch (err) {
-      const data = [{ name: "connection error" }];
+      const data = [{ ChargeDeviceName: "connection error" }];
       setResults(data);
     }
   };

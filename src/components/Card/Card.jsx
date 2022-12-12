@@ -1,14 +1,19 @@
 import "./Card.scss";
 const Card = ({ result }) => {
   return (
-    <div key={result.name} className="card">
+    <div key={result.ChargeDeviceName} className="card">
       <div className="card__seller-info">
-        <h2>{result.name}</h2>
-        <p>{result.description}</p>
+        <h2>{result.ChargeDeviceName}</h2>
+        <p>
+          {result.ChargeDeviceLocation &&
+            result.ChargeDeviceLocation.Address.Street}
+        </p>
       </div>
       <div className="card__distance-time-container">
-        <p>{result.distance}</p>
-        <p>{result.time}</p>
+        <p>
+          {result.ChargeDeviceLocation &&
+            result.ChargeDeviceLocation.Address.PostCode}
+        </p>
       </div>
     </div>
   );

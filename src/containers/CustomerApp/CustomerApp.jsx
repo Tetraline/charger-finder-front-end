@@ -12,6 +12,7 @@ const CustomerApp = () => {
   const [results, setResults] = useState([]);
 
   const getResultsAndDisplay = async (userLocation) => {
+    setResults({ ChargeDeviceName: "Loading...." });
     const p = {};
     p.lat = Number(userLocation.lat);
     p.lng = Number(userLocation.lng);
